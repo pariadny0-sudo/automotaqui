@@ -1,118 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>taquicardia</title>
-    <style type="text/css">
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family:sans-serif;
-    }
-    body{
-        width: 100%;
-        height: 100vh;
-        background: #303841;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    h1{
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-        font-size: 4.6rem;
-        color: #f8f9fa;
-        font-weight: 900;
-    }
-    .wrapper{
-        display: flex;
-    }
-    .count-wrapper{ 
-        width: 140px; 
-        height: 140px;
-        background: #f8f9fa; 
-        position: relative;
-        display: flex;
-        justify-content: center; 
-        align-items: center; 
-        flex-direction: column;
-        margin: 0 .6rem;
-}
-    .count-wrapper div{
-        font-weight:900;
-        font-size: 4rem; 
-        color: #999;
-}
-    .count-wrapper span{ 
-        width: 100%;
-        position: absolute;
-        bottom:0;
-        text-align: center;
-        padding: .2rem 0;
-        background: #999;
-    }
-    .alert{
-        animation: alert 1s linear infinite alternate;
-    }
-    @keyframes alert{
-        0%{
-            background: #112;
-        }
-        100%{
-            background: #a11;
-        }
-    }
-</style>
-</head>
-<body>
-    <h1>Taquicardia Index</h1>
-    <div class="wrapper">
-        <div class="count-wrapper">
-            <div id="days">00</div>
-            <span>Dias</span>
+    <link rel="stylesheet" href="DevilsCrew.css" />
+    <link rel="stylesheet" href="taqui.css" />
+    <h1>Save the date</h1>
+    <div class="timer-area">
+      <!-- Dias -->
+      <div class="timer-group">
+        <div class="digits">
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="days1">0</div>
+          </div>
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="days2">0</div>
+          </div>
         </div>
-        <div class="count-wrapper">
-            <div id="hours">0</div>
-            <span>Horas</span>
+        <div class="timer-label">Dia</div>
+      </div>
+      <!-- Horas -->
+      <div class="timer-group">
+        <div class="digits">
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="hours1">0</div>
+          </div>
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="hours2">0</div>
+          </div>
         </div>
-        <div class="count-wrapper">
-            <div id="min">00</div>
-            <span>Minutos</span>
+        <div class="timer-label">Hora</div>
+      </div>
+      <!-- Minutos -->
+      <div class="timer-group">
+        <div class="digits">
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="min1">0</div>
+          </div>
+          <div class="counter-item">
+            <img src="papel.png" class="paper-bg" />
+            <div class="digit" id="min2">0</div>
+          </div>
         </div>
-        <div class="count-wrapper">
-            <div id="sec">00</div>
-            <span>Segundos</span>
-        </div>
-    </div>
+        <div class="timer-label">Minuto</div>
+      </div>
+      <!-- Segundos -->
 
-    <script type="text/javascript">
-        let to = new Date('Sep 08 2025 17:25:00');
-        function update() {
-            let from = new Date(),
-                diff = to - from;
-            if (diff > 0) {
-                let days = setTwoDigit(Math.floor(diff / 1000 / 60 / 60 / 24)),
-                    hours = setTwoDigit(Math.floor(diff / 1000 / 60 / 60) % 24),
-                    min = setTwoDigit(Math.floor(diff / 1000 / 60) % 60),
-                    sec = setTwoDigit(Math.floor(diff / 1000) % 60);
-                document.querySelector('#days').innerText = days;
-                document.querySelector('#hours').innerText = hours;
-                document.querySelector('#min').innerText = min;
-                document.querySelector('#sec').innerText = sec;
-            } else {
-                clearInterval(interval);
-                document.querySelector('body').classList.add('alert');
-            }
-        }
-
-        let interval = setInterval(update, 1000);
-
-        function setTwoDigit(argument) {
-            return argument > 9 ? argument : '0' + argument;
-        }
+    <script>
+      const to = new Date("Sep 18 2025 17:29");
+      function update() {
+        const now = new Date();
+        let diff = Math.max(0, to - now);
+        const totalSeconds = Math.floor(diff / 1000);
+        const days = Math.floor(totalSeconds / 86400);
+        const hours = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        setDigits("days", days);
+        setDigits("hours", hours);
+        setDigits("min", minutes);
+        if (diff <= 0) document.body.classList.add("alert");
+      }
+      function setDigits(prefix, value) {
+        const str = String(value).padStart(2, "0");
+        document.getElementById(prefix + "1").textContent = str[0];
+        document.getElementById(prefix + "2").textContent = str[1];
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        update();
+        setInterval(update, 1000);
+      });
     </script>
-</body>
+  </body>
 </html>
