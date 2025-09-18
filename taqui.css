@@ -104,8 +104,8 @@ h1 {
     height: 80px;
   }
   .paper-bg {
-    width: 190px;
-    height: 200px;
+    width: 1rem;
+    height: 2rem;
   }
   .digit {
     font-size: 2rem;
