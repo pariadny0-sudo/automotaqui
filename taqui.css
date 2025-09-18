@@ -89,26 +89,39 @@ text-shadow: 1px 1px 2px #fff, 0 0 10px #fff;
   text-shadow: 1px 1px 3px #000;
 }
 
+/* ...existing code... */
+
 @media (max-width: 600px) {
-body {
+  body {
     background: url('fundo.png') no-repeat center center fixed;
     background-size: cover;
-}
-.counter-item {
-    width: 44px;
-    height: 56px;
-}
-.paper-bg {
-    width: 44px;
-    height: 56px;
-}
-.digit {
+  }
+  .timer-area {
+    flex-wrap: wrap;
+    gap: 2vw;
+  }
+  .counter-item {
+    width: 60px;
+    height: 80px;
+  }
+  .paper-bg {
+    width: 60px;
+    height: 80px;
+  }
+  .digit {
+    font-size: 2rem;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .timer-label {
     font-size: 1.2rem;
-    width: 22px;
-    height: 28px;
-    transform: translate(-50%, -50%) translateY(-8px);
+  }
 }
-.timer-label {
-    font-size: 0.7rem;
-}
-}
+

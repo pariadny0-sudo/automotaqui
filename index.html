@@ -6,7 +6,9 @@
     <title>taquicardia</title>
     <link rel="stylesheet" href="DevilsCrew.css" />
     <link rel="stylesheet" href="taqui.css" />
-    <h1>Save the date</h1>
+  </head>
+  <body>
+    <h1>Save the date</h1><br><br><br><br>
     <div class="timer-area">
       <!-- Dias -->
       <div class="timer-group">
@@ -20,7 +22,7 @@
             <div class="digit" id="days2">0</div>
           </div>
         </div>
-        <div class="timer-label">Dia</div>
+        <div class="timer-label">Dias</div>
       </div>
       <!-- Horas -->
       <div class="timer-group">
@@ -34,7 +36,7 @@
             <div class="digit" id="hours2">0</div>
           </div>
         </div>
-        <div class="timer-label">Hora</div>
+        <div class="timer-label">Horas</div>
       </div>
       <!-- Minutos -->
       <div class="timer-group">
@@ -48,12 +50,12 @@
             <div class="digit" id="min2">0</div>
           </div>
         </div>
-        <div class="timer-label">Minuto</div>
+        <div class="timer-label">Minutos</div>
       </div>
       <!-- Segundos -->
 
     <script>
-      const to = new Date("Sep 18 2025 17:29");
+      const to = new Date("Nov 01 2025 21:00");
       function update() {
         const now = new Date();
         let diff = Math.max(0, to - now);
