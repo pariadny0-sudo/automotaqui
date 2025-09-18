@@ -89,7 +89,6 @@ h1 {
   text-shadow: 1px 1px 3px #000;
 }
 
-/* ...existing code... */
 
 @media (max-width: 600px) {
   body {
@@ -105,8 +104,8 @@ h1 {
     height: 80px;
   }
   .paper-bg {
-    width: 60px;
-    height: 80px;
+    width: 90px;
+    height: 100px;
   }
   .digit {
     font-size: 2rem;
